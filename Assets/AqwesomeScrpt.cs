@@ -13,6 +13,6 @@ public class AqwesomeScrpt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print("I am awesome");
     }
 }
