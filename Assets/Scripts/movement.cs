@@ -35,8 +35,8 @@ public class movement : MonoBehaviour
     private GameObject distanceObj = null;
     private float startingX = 0;
     private PlayerAnimationManager animationManager;
-    private Rigidbody2D myRB; 
-
+    private Rigidbody2D myRB;
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +53,7 @@ public class movement : MonoBehaviour
         // to make the number the user enters the number of units the player will
         // actually be able to jump
         JumpHeight = Mathf.Sqrt(2.0f * Physics2D.gravity.magnitude * JumpHeight);
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = MaxHealth;
         startingX = transform.position.x;
 
@@ -86,7 +86,14 @@ public class movement : MonoBehaviour
             var Left_vec = new Vector2(-10, myRB.velocity.y);
             myRB.velocity = Left_vec;
         }
-
+        if (myRB.velocity.x > 0.01f) 
+        {
+            spriteRenderer.flipX = false;
+        }
+        if (myRB.velocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
         /*commented out because mario doesn't want to deal with animations right now in his test scene
         // Sliding
         if (Input.GetKey(SlideKey) && grounded)
