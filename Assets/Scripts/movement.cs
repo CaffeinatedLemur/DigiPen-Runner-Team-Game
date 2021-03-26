@@ -78,12 +78,12 @@ public class movement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(RightKey)) {
-            var Right_vec = new Vector2(10, myRB.velocity.y);
+            var Right_vec = new Vector2(7, myRB.velocity.y);
             myRB.velocity = Right_vec;
         }
         if (Input.GetKeyDown(LeftKey))
         {
-            var Left_vec = new Vector2(-10, myRB.velocity.y);
+            var Left_vec = new Vector2(-7, myRB.velocity.y);
             myRB.velocity = Left_vec;
         }
         if (myRB.velocity.x > 0.01f) 
