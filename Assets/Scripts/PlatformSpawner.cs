@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] GameObject basicPlatform;
-    [SerializeField] GameObject parentObj;
+    [SerializeField] public GameObject parentObj;
     [SerializeField] Transform playerTransform;
 
 
@@ -23,11 +23,11 @@ public class PlatformSpawner : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 20; i++)
-            SpawnPlatform(playerTransform);
+        for (int i = 0; i < 15; i++)
+            SpawnPlatform();
     }
 
-    public void SpawnPlatform(Transform playerTransform)
+    public void SpawnPlatform()
     {
         GameObject temp = Instantiate(basicPlatform, randPos, Quaternion.identity);
         temp.transform.parent = parentObj.transform;
