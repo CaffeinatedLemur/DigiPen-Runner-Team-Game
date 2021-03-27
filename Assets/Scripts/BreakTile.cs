@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*Name: BreakTile.cs
+ *Date: 3/26/2021
+ *Desc: allows for tile to be dropped after set amount of time from collision
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
