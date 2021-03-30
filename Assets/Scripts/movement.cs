@@ -27,6 +27,8 @@ public class movement : MonoBehaviour
     public KeyCode RightKey = KeyCode.RightArrow;
     public KeyCode LeftKey = KeyCode.LeftArrow;
 
+    public Animator animator;
+
     private int jumpsRemaining = 0;
     private int currentHealth = 0;
     private string nameOfHealthDisplayObject = "HealthBar";
@@ -70,7 +72,7 @@ public class movement : MonoBehaviour
         {
             if (jumpsRemaining > 0)
             {
-                //animationManager.SwitchTo(PlayerAnimationStates.Jump);
+                animator.SetBool("Scronch", false);
                 var jump_vec = new Vector3(myRB.velocity.x, JumpHeight, 0);
                 gameObject.GetComponent<Rigidbody2D>().velocity = jump_vec;
                 jumpsRemaining -= 1;
@@ -94,25 +96,14 @@ public class movement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        /*commented out because mario doesn't want to deal with animations right now in his test scene
-        // Sliding
-        if (Input.GetKey(SlideKey) && grounded)
-        {
-            animationManager.SwitchTo(PlayerAnimationStates.Slide);
-        }
-        // Running
-        else if (!Input.GetKey(SlideKey) && grounded)
-        {
-            animationManager.SwitchTo(PlayerAnimationStates.Run);
-        }
-        // Falling
-        else
-        {
-            animationManager.SwitchTo(PlayerAnimationStates.Jump);
-        }*/
 
-        // Lock the player to X = StartingX;
-        //gameObject.transform.position = new Vector3(startingX, transform.position.y, transform.position.z);
+
+        if (myRB.velocity.y < 0 /*|| myRB.velocity.y > 1*/)
+        {
+            myRB.velocity += Vector2.up * Physics2D.gravity.y * (1.1f - 1) * Time.deltaTime;
+            animator.SetBool("InAir", true);
+            
+        }
 
         // Update the Distance travelled
         PlayerSaveData.DistanceRun += MoveSpeed * Time.deltaTime;
@@ -129,40 +120,33 @@ public class movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Hit an Obstacle
-        if (collision.collider.gameObject.CompareTag("Obstacle"))
-        {
-            Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
 
-            if (obstacle != null)
-            {
-                currentHealth -= obstacle.Damage;
-                // Game Over
-                if (currentHealth <= 0)
-                {
-                    // Load score level
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScreen");
-                }
-                if (obstacle.DestroyOnPlayerCollision)
-                {
-                    Destroy(collision.collider.gameObject);
-                }
-                if (healthBarObj != null)
-                {
-                    healthBarObj.GetComponent<FeedbackBar>().SetValue(currentHealth);
-                    animationManager.SwitchTo(PlayerAnimationStates.Hurt);
-                }
-            }
-        }
-        // Hit the floor
         if (collision.collider.gameObject.CompareTag("Floor"))
         {
-            jumpsRemaining = MaxNumberOfJumps;
+            ResetAnim();
+            StartCoroutine(ResetJumps(0.3f));
         }
+    }
+
+
+    IEnumerator ResetJumps(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        jumpsRemaining = MaxNumberOfJumps;
+
+    }
+
+    private void ResetAnim()
+    {
+        animator.SetBool("InAir", false);
+        animator.SetBool("Scronch", true);
     }
 
     public bool IsGrounded()
     {
+       
         return jumpsRemaining == MaxNumberOfJumps;
+
     }
 }
