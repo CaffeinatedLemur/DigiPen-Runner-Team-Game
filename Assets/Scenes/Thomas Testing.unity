@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1683995317}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timLimit: 10
+  playerTransform: {fileID: 0}
   temp: 0
 --- !u!251 &2307392824507964535
 PlatformEffector2D:
