@@ -9,15 +9,19 @@ public class JetPack : MonoBehaviour
     private bool enabled;
     private float timer;
     public float timespan;
+
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         sp = GetComponent<SpriteRenderer>();
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (enabled)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -29,6 +33,21 @@ public class JetPack : MonoBehaviour
             {
                 enabled = false;
                 timer = 0;
+                Destroy(sp.gameObject);//object is kil
+            }
+        }
+        */
+        if (enabled)
+        {
+            playerRB.AddForce(new Vector2(0, 5));
+            animator.SetBool("Flying", true);
+            timer += Time.deltaTime;
+            if (timer >= timespan)
+            {
+                enabled = false;
+                timer = 0;
+                animator.SetBool("Flying", false);
+
                 Destroy(sp.gameObject);//object is kil
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyAfterTime : MonoBehaviour
 {
@@ -18,7 +19,14 @@ public class DestroyAfterTime : MonoBehaviour
     void Update()
     {
         temp += Time.deltaTime;
-        if (temp >= timLimit && playerTransform.transform.position.y > gameObject.transform.position.y + 20)
-            Destroy(gameObject);
+        try
+        {
+            if (temp >= timLimit && playerTransform.transform.position.y > gameObject.transform.position.y + 20)
+                Destroy(gameObject);
+        }
+        catch
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }

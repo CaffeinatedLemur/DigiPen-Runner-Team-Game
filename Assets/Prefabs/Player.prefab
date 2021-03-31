@@ -256,7 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9966d8ed0e54141a7ccbcef7ddbbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 3
+  dinoHealth: 0
   currentHearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -266,6 +267,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  shieldsHearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dinoHeart: {fileID: 0}
+  dinoBoiPlayer: {fileID: 0}
 --- !u!1 &48165916596324620
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +322,14 @@ MonoBehaviour:
     type: 3}
   parentObj: {fileID: 0}
   playerTransform: {fileID: 48165916552300604}
-  powerUps: []
+  powerUps:
+  - {fileID: 8156605188973222479, guid: 5b665a1f35742724a87f3edf1339d92a, type: 3}
+  - {fileID: 636989341333663737, guid: 3b36e56590ac02a41b376f56b86313eb, type: 3}
+  - {fileID: 5695452843469880369, guid: 1cd335f64f940254c8cff9a3fefe455f, type: 3}
+  - {fileID: 5036633336500374723, guid: fb671751e6a282c43a0de4081a91430c, type: 3}
+  platforms:
+  - {fileID: 2307392823534202560, guid: f610ff695f31de64caa573ed191a30b3, type: 3}
+  - {fileID: 7593120942526958193, guid: efe997adf7b038b498070820956dbbd9, type: 3}
 --- !u!114 &48165916596324657
 MonoBehaviour:
   m_ObjectHideFlags: 0

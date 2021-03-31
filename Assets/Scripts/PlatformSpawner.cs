@@ -9,9 +9,8 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] Transform playerTransform;
 
     [SerializeField] GameObject[] powerUps;
-
+    [SerializeField] GameObject[] platforms;
     private Vector3[,] platformPositions = new Vector3[25, 10];
-    private Vector3[,] powerUpsPositions = new Vector3[25, 10];
     private Vector2 randPos;
 
     // Start is called before the first frame update
@@ -25,17 +24,24 @@ public class PlatformSpawner : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 20; i++)
             SpawnPlatform();
     }
 
     public void SpawnPlatform()
     {
-        GameObject temp = Instantiate(basicPlatform, randPos, Quaternion.identity);
+        GameObject temp;
+        if (Mathf.RoundToInt(Random.Range(0, 4)) == 0)
+        {
+            temp = Instantiate(platforms[1], randPos, Quaternion.identity);
+        }
+        else
+        {
+            temp = Instantiate(platforms[0], randPos, Quaternion.identity);
+        }
         temp.transform.parent = parentObj.transform;
         temp.transform.localPosition = platformPositions[Random.Range(0, 25), Random.Range(0, 10)];
-
-        if (Mathf.RoundToInt(Random.Range(0,5000)) == 0)
+        if (Mathf.RoundToInt(Random.Range(0,25)) == 0)
         {
             SpawnPowerup();
         }
@@ -43,7 +49,7 @@ public class PlatformSpawner : MonoBehaviour
 
     public void SpawnPowerup()
     {
-        GameObject temp = Instantiate(powerUps[Mathf.RoundToInt(Random.Range(0,powerUps.Length-1))], randPos, Quaternion.identity);
+        GameObject temp = Instantiate(powerUps[Mathf.RoundToInt(Random.Range(0,powerUps.Length))], randPos, Quaternion.identity);
         temp.transform.parent = parentObj.transform;
         temp.transform.localPosition = platformPositions[Random.Range(0, 25), Random.Range(0, 10)];
     }
