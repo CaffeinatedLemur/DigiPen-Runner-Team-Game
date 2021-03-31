@@ -27,7 +27,8 @@ public class movement : MonoBehaviour
     public KeyCode RightKey = KeyCode.RightArrow;
     public KeyCode LeftKey = KeyCode.LeftArrow;
 
-    public Animator animator;
+    public Animator playerAnimator;
+    public Animator dinoboiAnimator;
 
     private int jumpsRemaining = 0;
     private int currentHealth = 0;
@@ -72,7 +73,9 @@ public class movement : MonoBehaviour
         {
             if (jumpsRemaining > 0)
             {
-                animator.SetBool("Scronch", false);
+                playerAnimator.SetBool("Scronch", false);
+                dinoboiAnimator.SetBool("Scronch", false);
+
                 var jump_vec = new Vector3(myRB.velocity.x, JumpHeight, 0);
                 gameObject.GetComponent<Rigidbody2D>().velocity = jump_vec;
                 jumpsRemaining -= 1;
@@ -101,8 +104,8 @@ public class movement : MonoBehaviour
         if (myRB.velocity.y < 0 /*|| myRB.velocity.y > 1*/)
         {
             myRB.velocity += Vector2.up * Physics2D.gravity.y * (1.1f - 1) * Time.deltaTime;
-            animator.SetBool("InAir", true);
-            
+            playerAnimator.SetBool("InAir", true);
+            dinoboiAnimator.SetBool("InAir", true);
         }
 
         // Update the Distance travelled
@@ -139,8 +142,11 @@ public class movement : MonoBehaviour
 
     private void ResetAnim()
     {
-        animator.SetBool("InAir", false);
-        animator.SetBool("Scronch", true);
+        playerAnimator.SetBool("InAir", false);
+        playerAnimator.SetBool("Scronch", true);
+
+        dinoboiAnimator.SetBool("InAir", false);
+        dinoboiAnimator.SetBool("Scronch", true);
     }
 
     public bool IsGrounded()

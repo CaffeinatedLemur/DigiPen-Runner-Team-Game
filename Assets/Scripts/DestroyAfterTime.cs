@@ -18,7 +18,7 @@ public class DestroyAfterTime : MonoBehaviour
     void Update()
     {
         temp += Time.deltaTime;
-        if (temp >= timLimit && playerTransform.transform.position.y > gameObject.transform.position.y + 10)
+        if (temp >= timLimit && playerTransform.transform.position.y > gameObject.transform.position.y + 20)
             Destroy(gameObject);
     }
 }
