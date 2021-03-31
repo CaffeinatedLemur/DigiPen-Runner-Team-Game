@@ -44,9 +44,10 @@ public class JetPack : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= timespan)
             {
+                animator.SetBool("Flying", false);
+
                 enabled = false;
                 timer = 0;
-                animator.SetBool("Flying", false);
 
                 Destroy(sp.gameObject);//object is kil
             }

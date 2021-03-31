@@ -41,7 +41,7 @@ public class PlatformSpawner : MonoBehaviour
         }
         temp.transform.parent = parentObj.transform;
         temp.transform.localPosition = platformPositions[Random.Range(0, 25), Random.Range(0, 10)];
-        if (Mathf.RoundToInt(Random.Range(0,25)) == 0)
+        if (Mathf.RoundToInt(Random.Range(0,20)) == 0)
         {
             SpawnPowerup();
         }
