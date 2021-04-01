@@ -26,6 +26,7 @@ public class movement : MonoBehaviour
     public KeyCode SlideKey = KeyCode.LeftShift;
     public KeyCode RightKey = KeyCode.RightArrow;
     public KeyCode LeftKey = KeyCode.LeftArrow;
+    public AudioClip Ac;
 
     public Animator playerAnimator;
     public Animator dinoboiAnimator;
@@ -40,9 +41,12 @@ public class movement : MonoBehaviour
     private PlayerAnimationManager animationManager;
     private Rigidbody2D myRB;
     private SpriteRenderer spriteRenderer;
+    private AudioSource As;
+    
     // Start is called before the first frame update
     void Start()
     {
+        As = GetComponent<AudioSource>();
         healthBarObj = GameObject.Find(nameOfHealthDisplayObject);
         distanceObj = GameObject.Find(nameOfDistanceLabelObject);
         animationManager = GetComponent<PlayerAnimationManager>();
@@ -73,6 +77,7 @@ public class movement : MonoBehaviour
         {
             if (jumpsRemaining > 0)
             {
+                As.PlayOneShot(Ac);
                 playerAnimator.SetBool("Scronch", false);
                 dinoboiAnimator.SetBool("Scronch", false);
 
