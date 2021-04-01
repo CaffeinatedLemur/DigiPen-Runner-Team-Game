@@ -35,9 +35,5 @@ public class Shield : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        print(PlayerHealthHandler.isInvulnerable);
-    }
 }
 

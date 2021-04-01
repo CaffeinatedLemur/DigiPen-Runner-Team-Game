@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealthHandler : MonoBehaviour
@@ -21,6 +22,10 @@ public class PlayerHealthHandler : MonoBehaviour
         UpdateUI(playerHealth);
         dinoBoiPlayer = FindObjectOfType<DinoFollower>().gameObject;
         dinoBoiPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        for (int i = 0; i < maxHealth; i++)
+        {
+            missingHearts[i].gameObject.SetActive(false);
+        }
     }
 
     public void AddHealth(int healthMod)
@@ -53,18 +58,39 @@ public class PlayerHealthHandler : MonoBehaviour
             if (dinoHealth > 0)
                 AddDino(false);
             else
+            {
+                missingHearts[playerHealth - 1].gameObject.SetActive(true);
                 playerHealth -= healthMod;
+            }
         }
         UpdateUI(playerHealth);
     }
     public void UpdateUI(int currentHealth)
     {
-        
-        for (int i = 0; i < currentHealth; i++)
+        /*
+        for (int i = 0; i < maxHealth; i++)
         {
-            missingHearts[i].gameObject.SetActive(false);
+            print(missingHearts[i].gameObject.activeSelf);
+            if (i <= currentHealth)
+            {
+                missingHearts[i].gameObject.SetActive(false);
+            }
+            else
+                missingHearts[i].gameObject.SetActive(true);
+
         }
-        
+        */
+        for (int i = 0; i < maxHealth; i++)
+        {
+            //missingHearts[i].gameObject.SetActive(false);
+            for (int p = maxHealth; p < currentHealth; p++)
+            {
+                missingHearts[p].gameObject.SetActive(true);
+            }
+        }
+
+
+
         if (dinoHealth == 1)
             currentHearts[3].gameObject.SetActive(true);
         else
@@ -96,4 +122,15 @@ public class PlayerHealthHandler : MonoBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        print(playerHealth);
+        UpdateUI(playerHealth);
+
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
 }
