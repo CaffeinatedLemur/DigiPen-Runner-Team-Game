@@ -53,6 +53,10 @@ public class JetPack : MonoBehaviour
                 Destroy(sp.gameObject);//object is kil
             }
         }
+        else
+        {
+            animator.SetBool("Flying", false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)//when it hits the player it turns invisible and such
     {
