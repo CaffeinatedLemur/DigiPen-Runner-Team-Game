@@ -6,6 +6,7 @@ public class Shield : MonoBehaviour
 {
     private Animator animator;
     private PlayerHealthHandler playerHealthHandler;
+    public AudioClip ac;
     [SerializeField] int duration = 5;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Shield : MonoBehaviour
             playerHealthHandler.UpdateUI(PlayerHealthHandler.playerHealth);
             StartCoroutine(ExecuteAfterTime(duration));
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
 
     }
