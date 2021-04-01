@@ -7,7 +7,7 @@ public class Enemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("Hello");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

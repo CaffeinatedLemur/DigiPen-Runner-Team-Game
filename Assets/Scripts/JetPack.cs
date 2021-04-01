@@ -40,7 +40,7 @@ public class JetPack : MonoBehaviour
         if (enabled)
         {
             playerRB.AddForce(new Vector2(0, 5));
-            animator.SetBool("Flying", true);
+            //animator.SetBool("Flying", true);
             timer += Time.deltaTime;
             if (timer >= timespan)
             {
@@ -48,7 +48,7 @@ public class JetPack : MonoBehaviour
 
                 enabled = false;
                 timer = 0;
-
+                animator.SetBool("Flying", false);
                 Destroy(sp.gameObject);//object is kil
             }
         }
@@ -59,6 +59,8 @@ public class JetPack : MonoBehaviour
         playerRB = collision.GetComponent<Rigidbody2D>();
         sp.color = new Color(1f, 1f, 1f, 0f);
         enabled = true;
+            animator.SetBool("Flying", true);
+
         }
     }
 }
