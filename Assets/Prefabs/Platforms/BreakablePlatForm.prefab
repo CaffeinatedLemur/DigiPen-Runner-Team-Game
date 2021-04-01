@@ -122,7 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdTil: 1
   DestroyAt: 3
-  ac: {fileID: 8300000, guid: 340db263a4b73b04489df7005148a4d5, type: 3}
 --- !u!114 &4389191508753084265
 MonoBehaviour:
   m_ObjectHideFlags: 0

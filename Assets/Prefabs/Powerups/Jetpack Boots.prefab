@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timespan: 2
-  ac: {fileID: 8300000, guid: 9fbd2480e57dbe54eb7ead2dfa9a9266, type: 3}
 --- !u!212 &5695452843469880380
 SpriteRenderer:
   m_ObjectHideFlags: 0

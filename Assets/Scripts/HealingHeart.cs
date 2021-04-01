@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealingHeart : MonoBehaviour
 {
     private PlayerHealthHandler playerHealthHandler;
-    public AudioClip ac;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,6 @@ public class HealingHeart : MonoBehaviour
         {
             playerHealthHandler.AddHealth(1);
             Destroy(gameObject);
-            collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
         
     }

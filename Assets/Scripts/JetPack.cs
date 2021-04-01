@@ -9,7 +9,6 @@ public class JetPack : MonoBehaviour
     private bool enabled;
     private float timer;
     public float timespan;
-    public AudioClip ac;
 
     private Animator animator;
     // Start is called before the first frame update
@@ -60,7 +59,6 @@ public class JetPack : MonoBehaviour
         playerRB = collision.GetComponent<Rigidbody2D>();
         sp.color = new Color(1f, 1f, 1f, 0f);
         enabled = true;
-        collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
     }
 }
