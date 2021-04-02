@@ -231,6 +231,21 @@ PrefabInstance:
       propertyPath: dinoboiAnimator
       value: 
       objectReference: {fileID: 1835465944}
+    - target: {fileID: 48165916552300577, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: JumpHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 48165916552300577, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: MaxNumberOfJumps
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 48165916552300578, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 48165916552300580, guid: 93a5ff8e718191848988dddd75ff8ea0,
         type: 3}
       propertyPath: currentHearts.Array.data[0]
@@ -296,15 +311,20 @@ PrefabInstance:
       propertyPath: dinoBoiPlayer
       value: 
       objectReference: {fileID: 1835465942}
+    - target: {fileID: 48165916552300581, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 48165916552300604, guid: 93a5ff8e718191848988dddd75ff8ea0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08
+      value: 0.275
       objectReference: {fileID: 0}
     - target: {fileID: 48165916552300604, guid: 93a5ff8e718191848988dddd75ff8ea0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 48165916552300604, guid: 93a5ff8e718191848988dddd75ff8ea0,
         type: 3}
@@ -371,6 +391,18 @@ PrefabInstance:
       propertyPath: parentObj
       value: 
       objectReference: {fileID: 1439853745}
+    - target: {fileID: 48165916596324659, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: basicPlatform
+      value: 
+      objectReference: {fileID: 2307392823534202560, guid: f610ff695f31de64caa573ed191a30b3,
+        type: 3}
+    - target: {fileID: 48165916596324659, guid: 93a5ff8e718191848988dddd75ff8ea0,
+        type: 3}
+      propertyPath: platforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 2307392823534202560, guid: f610ff695f31de64caa573ed191a30b3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93a5ff8e718191848988dddd75ff8ea0, type: 3}
 --- !u!4 &340595309 stripped

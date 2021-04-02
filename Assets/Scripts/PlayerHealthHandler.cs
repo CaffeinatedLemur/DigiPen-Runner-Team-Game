@@ -116,9 +116,11 @@ public class PlayerHealthHandler : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            SceneManager.LoadScene(2);
+            
             playerHealth = maxHealth;
             isInvulnerable = false;
+            UpdateUI(playerHealth);
+            SceneManager.LoadScene(2);
         }
     }
 }

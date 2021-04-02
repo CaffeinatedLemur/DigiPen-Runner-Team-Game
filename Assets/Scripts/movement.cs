@@ -27,18 +27,14 @@ public class movement : MonoBehaviour
     public KeyCode RightKey = KeyCode.RightArrow;
     public KeyCode LeftKey = KeyCode.LeftArrow;
     public AudioClip Ac;
-
+    public bool chainJumping;
     public Animator playerAnimator;
     public Animator dinoboiAnimator;
 
     private int jumpsRemaining = 0;
-    private int currentHealth = 0;
     private string nameOfHealthDisplayObject = "HealthBar";
     private string nameOfDistanceLabelObject = "DistanceLabel";
     private GameObject healthBarObj = null;
-    private GameObject distanceObj = null;
-    private float startingX = 0;
-    private PlayerAnimationManager animationManager;
     private Rigidbody2D myRB;
     private SpriteRenderer spriteRenderer;
     private AudioSource As;
@@ -48,8 +44,6 @@ public class movement : MonoBehaviour
     {
         As = GetComponent<AudioSource>();
         healthBarObj = GameObject.Find(nameOfHealthDisplayObject);
-        distanceObj = GameObject.Find(nameOfDistanceLabelObject);
-        animationManager = GetComponent<PlayerAnimationManager>();
         myRB = GetComponent<Rigidbody2D>();
         if (healthBarObj != null)
         {
@@ -61,8 +55,6 @@ public class movement : MonoBehaviour
         // actually be able to jump
         JumpHeight = Mathf.Sqrt(2.0f * Physics2D.gravity.magnitude * JumpHeight);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = MaxHealth;
-        startingX = transform.position.x;
 
         // Reset score
         PlayerSaveData.DistanceRun = 0;
@@ -72,21 +64,18 @@ public class movement : MonoBehaviour
     void Update()
     {
         bool grounded = IsGrounded();
-        // Jumping
-        if (true)
+        
+        if (jumpsRemaining > 0)
         {
-            if (jumpsRemaining > 0)
-            {
-                As.PlayOneShot(Ac);
-                playerAnimator.SetBool("Scronch", false);
-                dinoboiAnimator.SetBool("Scronch", false);
+            As.PlayOneShot(Ac);
+            playerAnimator.SetBool("Scronch", false);
+            dinoboiAnimator.SetBool("Scronch", false);
 
-                var jump_vec = new Vector3(myRB.velocity.x, JumpHeight, 0);
-                gameObject.GetComponent<Rigidbody2D>().velocity = jump_vec;
-                jumpsRemaining -= 1;
-            }
+            var jump_vec = new Vector3(myRB.velocity.x, JumpHeight, 0);
+            gameObject.GetComponent<Rigidbody2D>().velocity = jump_vec;
+            jumpsRemaining -= 1;
         }
-
+        
         if (Input.GetKeyDown(RightKey)) {
             var Right_vec = new Vector2(7, myRB.velocity.y);
             myRB.velocity = Right_vec;
@@ -106,23 +95,11 @@ public class movement : MonoBehaviour
         }
 
 
-        if (myRB.velocity.y < 0 /*|| myRB.velocity.y > 1*/)
+        if (myRB.velocity.y < 0)
         {
             myRB.velocity += Vector2.up * Physics2D.gravity.y * (1.1f - 1) * Time.deltaTime;
             playerAnimator.SetBool("InAir", true);
             dinoboiAnimator.SetBool("InAir", true);
-        }
-
-        // Update the Distance travelled
-        PlayerSaveData.DistanceRun += MoveSpeed * Time.deltaTime;
-        if (distanceObj != null)
-        {
-            if (distanceObj.GetComponent<TextMeshProUGUI>() != null)
-            {
-                string distText = string.Format("{0,4:F1}", PlayerSaveData.DistanceRun);
-                distanceObj.GetComponent<TextMeshProUGUI>().text = "Distance: "
-                    + distText + " m";
-            }
         }
     }
 
@@ -131,9 +108,21 @@ public class movement : MonoBehaviour
 
         if (collision.collider.gameObject.CompareTag("Floor"))
         {
-            ResetAnim();
-            StartCoroutine(ResetJumps(0.3f));
+            if (chainJumping)
+            {
+                ResetAnim();
+                StartCoroutine(ResetJumps(0.3f));
+            }
+            else
+            {
+                if (myRB.velocity.y == 0)
+                {
+                    ResetAnim();
+                    StartCoroutine(ResetJumps(0.3f));
+                }
+            }
         }
+        
     }
 
 
