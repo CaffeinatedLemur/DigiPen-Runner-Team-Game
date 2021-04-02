@@ -38,7 +38,10 @@ public class BreakTile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        col.gameObject.GetComponent<AudioSource>().PlayOneShot(ac);
-        tf = true;
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<AudioSource>().PlayOneShot(ac);
+            tf = true;
+        }
     }
 }

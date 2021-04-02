@@ -26,7 +26,6 @@ public class Shield : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
-
     }
     IEnumerator ExecuteAfterTime(float time)
     {

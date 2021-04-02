@@ -21,6 +21,6 @@ public class ScoreScreen : MonoBehaviour
     void Start()
     {
         string dist = string.Format("{0,4:F1}", PlayerSaveData.DistanceRun);
-        GetComponent<TextMeshProUGUI>().text = "You Ran " + dist.ToString() + " Meters!";
+        GetComponent<TextMeshProUGUI>().text = "Altitude Reached: " + dist.ToString() + " Meters!";
     }
 }
