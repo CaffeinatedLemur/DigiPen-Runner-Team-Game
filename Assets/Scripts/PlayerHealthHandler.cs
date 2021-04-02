@@ -116,7 +116,6 @@ public class PlayerHealthHandler : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            GetComponent<AudioSource>().PlayOneShot(aac);
             SceneManager.LoadScene(2);
             playerHealth = maxHealth;
             isInvulnerable = false;
