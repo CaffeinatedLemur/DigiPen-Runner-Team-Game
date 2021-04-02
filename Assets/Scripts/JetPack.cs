@@ -34,7 +34,7 @@ public class JetPack : MonoBehaviour
         if (enabled)
         {
             //move the player up
-            playerRB.AddForce(new Vector2(0, 5));
+            playerRB.velocity = Vector3.up * 15;
             //update animator
             animator.SetBool("Flying", true);
             //update timer
@@ -71,6 +71,9 @@ public class JetPack : MonoBehaviour
             sp.color = new Color(1f, 1f, 1f, 0f);
             //turn it on
             enabled = true;
+            //reset player velocity
+            playerRB.velocity = Vector3.zero;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //play the sound
             collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }

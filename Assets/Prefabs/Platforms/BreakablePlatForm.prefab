@@ -137,7 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timLimit: 10
   playerTransform: {fileID: 0}
-  temp: 0
 --- !u!61 &431257198104001116
 BoxCollider2D:
   m_ObjectHideFlags: 0

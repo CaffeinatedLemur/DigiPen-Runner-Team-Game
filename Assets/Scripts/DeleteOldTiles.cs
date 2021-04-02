@@ -62,7 +62,14 @@ public class DeleteOldTiles : MonoBehaviour
                     platformSpawner.SpawnPlatform();
                 }
                 //move the killbox up
-                Vector3 updatedKillboxPos = new Vector3(0, playerTransform.position.y - 15, 0);
+                /*
+                Vector3 updatedKillboxPos = new Vector3(0, playerTransform.position.y - , 0);
+                killBox.transform.position = updatedKillboxPos;
+                //reset spawn timer
+                timer = 0;
+                */
+                Vector3 updatedKillboxPos = killBox.transform.position;
+                updatedKillboxPos.y += 10;
                 killBox.transform.position = updatedKillboxPos;
                 //reset spawn timer
                 timer = 0;

@@ -17,6 +17,7 @@ public class Enemies : MonoBehaviour
         {
             //remove a health
             collision.gameObject.GetComponent<PlayerHealthHandler>().SubtractHealth(1);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //remove the enemy
             Destroy(gameObject);
         }
