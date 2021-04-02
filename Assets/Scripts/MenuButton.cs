@@ -85,4 +85,7 @@ public class MenuButton : MonoBehaviour
     {
         SceneManager.LoadScene(0); //load the main menu
     }
+    public void PlaySound(AudioClip ac) {
+        GetComponent<AudioSource>().PlayOneShot(ac);
+    }
 }
