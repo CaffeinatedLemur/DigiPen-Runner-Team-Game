@@ -105,8 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8ad8f2e75574347adbdbcb35aeeb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  MaxHealth: 3
   JumpHeight: 4
   MaxNumberOfJumps: 2
   JumpKey: 32
@@ -114,6 +112,8 @@ MonoBehaviour:
   RightKey: 275
   LeftKey: 276
   Ac: {fileID: 8300000, guid: 940f8919cd769b444b2fd6ecba2b192c, type: 3}
+  AAc: {fileID: 8300000, guid: 29147b263890f4e4ab99fec99546dc67, type: 3}
+  chainJumping: 0
   playerAnimator: {fileID: 48165916552300582}
   dinoboiAnimator: {fileID: 0}
 --- !u!61 &48165916552300578
@@ -279,7 +279,6 @@ MonoBehaviour:
   dinoHeart: {fileID: 0}
   dinoBoiPlayer: {fileID: 0}
   ac: {fileID: 8300000, guid: a5969ef208dc8004693a7713eb939225, type: 3}
-  aac: {fileID: 8300000, guid: 61fb8c2aa19e40e4197b4584ed63347b, type: 3}
 --- !u!82 &673553257976064419
 AudioSource:
   m_ObjectHideFlags: 0
@@ -516,8 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3637d89398f588b47b16df4a8e2db8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicPlatform: {fileID: 2307392823534202560, guid: f610ff695f31de64caa573ed191a30b3,
-    type: 3}
   parentObj: {fileID: 0}
   playerTransform: {fileID: 48165916552300604}
   powerUps:

@@ -28,6 +28,7 @@ public class movement : MonoBehaviour
     public KeyCode RightKey = KeyCode.RightArrow;
     public KeyCode LeftKey = KeyCode.LeftArrow;
     public AudioClip Ac; //audioclip to player on jump
+    public AudioClip AAc; //landing sound
     public bool chainJumping; //wether or not to allow for chainjumping between platforms
     public Animator playerAnimator; //animator of player
     public Animator dinoboiAnimator; //animator of the dino
@@ -120,6 +121,7 @@ public class movement : MonoBehaviour
                 //otherwise only reset jumps once playre is still and landed
                 if (myRB.velocity.y == 0)
                 {
+                    As.PlayOneShot(AAc);
                     ResetAnim();
                     StartCoroutine(ResetJumps(0.3f));
                 }
