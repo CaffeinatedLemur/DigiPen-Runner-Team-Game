@@ -16,7 +16,8 @@ public class PlayerHealthHandler : MonoBehaviour
     [SerializeField] Image dinoHeart;
 
     [SerializeField] GameObject dinoBoiPlayer;
-
+    public AudioClip ac;
+    public AudioClip aac;
     public void Start()
     {
         UpdateUI(playerHealth);
@@ -62,6 +63,7 @@ public class PlayerHealthHandler : MonoBehaviour
                 missingHearts[playerHealth - 1].gameObject.SetActive(true);
                 playerHealth -= healthMod;
             }
+            GetComponent<AudioSource>().PlayOneShot(ac);
         }
         UpdateUI(playerHealth);
     }
@@ -130,6 +132,7 @@ public class PlayerHealthHandler : MonoBehaviour
 
         if (playerHealth <= 0)
         {
+            GetComponent<AudioSource>().PlayOneShot(aac);
             SceneManager.LoadScene(2);
         }
     }

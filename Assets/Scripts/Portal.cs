@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     public bool cooldown = false;
     private Collider2D myCol;
     private float timer = 0;
+    public AudioClip ac;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class Portal : MonoBehaviour
             OtherPortal.GetComponent<Portal>().cooldown = true;
             collision.gameObject.transform.position = OtherPortal.transform.position;
             cooldown = true;
+            collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
     }
 }
