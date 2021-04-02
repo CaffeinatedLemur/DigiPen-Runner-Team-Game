@@ -69,29 +69,13 @@ public class PlayerHealthHandler : MonoBehaviour
     }
     public void UpdateUI(int currentHealth)
     {
-        /*
         for (int i = 0; i < maxHealth; i++)
         {
-            print(missingHearts[i].gameObject.activeSelf);
-            if (i <= currentHealth)
-            {
-                missingHearts[i].gameObject.SetActive(false);
-            }
-            else
-                missingHearts[i].gameObject.SetActive(true);
-
-        }
-        */
-        for (int i = 0; i < maxHealth; i++)
-        {
-            //missingHearts[i].gameObject.SetActive(false);
             for (int p = maxHealth; p < currentHealth; p++)
             {
                 missingHearts[p].gameObject.SetActive(true);
             }
         }
-
-
 
         if (dinoHealth == 1)
             currentHearts[3].gameObject.SetActive(true);
@@ -133,6 +117,8 @@ public class PlayerHealthHandler : MonoBehaviour
         {
             GetComponent<AudioSource>().PlayOneShot(aac);
             SceneManager.LoadScene(2);
+            playerHealth = maxHealth;
+            isInvulnerable = false;
         }
     }
 }

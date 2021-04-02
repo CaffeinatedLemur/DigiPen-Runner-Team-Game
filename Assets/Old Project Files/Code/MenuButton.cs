@@ -78,7 +78,7 @@ public class MenuButton : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     private void MainMenu()

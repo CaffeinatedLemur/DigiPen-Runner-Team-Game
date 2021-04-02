@@ -22,22 +22,6 @@ public class JetPack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (enabled)
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                playerRB.AddForce(new Vector2(0, 5));//while it's held down it pushes the player up
-            }
-            timer++;
-            if (timer >= timespan)
-            {
-                enabled = false;
-                timer = 0;
-                Destroy(sp.gameObject);//object is kil
-            }
-        }
-        */
         if (enabled)
         {
             playerRB.AddForce(new Vector2(0, 5));
@@ -50,7 +34,7 @@ public class JetPack : MonoBehaviour
                 enabled = false;
                 timer = 0;
 
-                Destroy(sp.gameObject);//object is kil
+                Destroy(gameObject);//object is kil
             }
         }
         else
