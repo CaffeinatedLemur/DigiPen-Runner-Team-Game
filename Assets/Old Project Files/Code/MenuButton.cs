@@ -62,7 +62,7 @@ public class MenuButton : MonoBehaviour
 
     private void Play()
     {
-        SceneManager.LoadScene("GameLevel");
+        SceneManager.LoadScene("ThomasTesting");
     }
 
     private void Exit()

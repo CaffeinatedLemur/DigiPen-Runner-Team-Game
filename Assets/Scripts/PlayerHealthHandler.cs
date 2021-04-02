@@ -125,7 +125,6 @@ public class PlayerHealthHandler : MonoBehaviour
 
     private void Update()
     {
-        print(playerHealth);
         UpdateUI(playerHealth);
 
         if (playerHealth <= 0)
