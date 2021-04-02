@@ -34,6 +34,7 @@ public class PlayerHealthHandler : MonoBehaviour
         playerHealth += healthMod;
         if (playerHealth >= maxHealth)
             playerHealth = maxHealth;
+        missingHearts[playerHealth - 1].gameObject.SetActive(false);
         UpdateUI(playerHealth);
     }
     public void AddDino(bool add)
