@@ -8,6 +8,8 @@ public class Shield : MonoBehaviour
     private PlayerHealthHandler playerHealthHandler;
     public AudioClip ac;
     [SerializeField] int duration = 5;
+    private bool isActive = false;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            gameObject.transform.parent = collision.gameObject.transform;
             StartCoroutine(ExecuteAfterTime(duration));
             PlayerHealthHandler.isInvulnerable = true;
             animator.SetBool("Shielded", true);
@@ -26,8 +29,10 @@ public class Shield : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             collision.GetComponent<AudioSource>().PlayOneShot(ac);
+            isActive = true;
         }
     }
+
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);

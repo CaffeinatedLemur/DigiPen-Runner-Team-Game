@@ -11,6 +11,11 @@ public class DeleteOldTiles : MonoBehaviour
     [SerializeField] GameObject killBox;
     private Vector3 updatedParentPos;
     private PlatformSpawner platformSpawner;
+
+    private float autoSpawnCD = 10;
+    private float timer = 0;
+    private int maxSpawns = 10;
+    public int currentSpawns = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +26,8 @@ public class DeleteOldTiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        print(timer);
         //Transform[] previousPlatforms = platformParentObj.GetComponentsInChildren<Transform>();
         Transform[] previousPlatforms = new Transform[platformParentObj.transform.childCount];
         for (int i = 0; i < platformParentObj.transform.childCount; i++)
@@ -41,11 +47,24 @@ public class DeleteOldTiles : MonoBehaviour
                 //previousPlatforms[i].gameObject.SetActive(false);
                
                 Destroy(previousPlatforms[i].gameObject);
-
+                currentSpawns--;
                 for (int p = 0; p < 10; p++)
+                {
                     platformSpawner.SpawnPlatform();
+                    currentSpawns++;
+                }
                 Vector3 updatedKillboxPos = new Vector3(0, playerTransform.position.y - 10, 0);
                 killBox.transform.position = updatedKillboxPos;
+                timer = 0;
+            }
+        }
+        if (timer > autoSpawnCD/* && currentSpawns <= maxSpawns*/)
+        {
+            for (int p = 0; p < 10; p++)
+            {
+                platformSpawner.SpawnPlatform();
+                currentSpawns++;
+                timer = 0;
             }
         }
         previousPlatforms = platformParentObj.GetComponentsInChildren<Transform>();

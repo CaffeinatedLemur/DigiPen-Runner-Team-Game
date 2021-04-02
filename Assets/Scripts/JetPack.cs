@@ -5,7 +5,7 @@ using UnityEngine;
 public class JetPack : MonoBehaviour
 {
     private SpriteRenderer sp;
-    private Rigidbody2D playerRB ;
+    private Rigidbody2D playerRB;
     private bool enabled;
     private float timer;
     public float timespan;
@@ -44,11 +44,13 @@ public class JetPack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)//when it hits the player it turns invisible and such
     {
-        if (collision.CompareTag("Player")) { 
-        playerRB = collision.GetComponent<Rigidbody2D>();
-        sp.color = new Color(1f, 1f, 1f, 0f);
-        enabled = true;
-        collision.GetComponent<AudioSource>().PlayOneShot(ac);
+        if (collision.CompareTag("Player"))
+        {
+            gameObject.transform.parent = collision.gameObject.transform;
+            playerRB = collision.GetComponent<Rigidbody2D>();
+            sp.color = new Color(1f, 1f, 1f, 0f);
+            enabled = true;
+            collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
     }
 }

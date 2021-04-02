@@ -28,7 +28,6 @@ public class PlatformSpawner : MonoBehaviour
         for (int i = 0; i < 20; i++)
             SpawnPlatform();
     }
-
     public void SpawnPlatform()
     {
         GameObject temp;
