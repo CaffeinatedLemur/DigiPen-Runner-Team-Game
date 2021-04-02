@@ -62,7 +62,7 @@ public class MenuButton : MonoBehaviour
 
     private void Play()
     {
-        SceneManager.LoadScene("ThomasTesting");
+        SceneManager.LoadScene(1);
     }
 
     private void Exit()
@@ -78,11 +78,11 @@ public class MenuButton : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 
     private void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 }

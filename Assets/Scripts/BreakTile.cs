@@ -41,6 +41,9 @@ public class BreakTile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
-        tf = true;
+        if (col.gameObject.CompareTag("Player"))
+        {
+            tf = true;
+        }
     }
 }
