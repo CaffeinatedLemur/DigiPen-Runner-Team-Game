@@ -62,7 +62,7 @@ public class MenuButton : MonoBehaviour
 
     private void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1); //load the main play scene
     }
 
     private void Exit()
@@ -78,11 +78,11 @@ public class MenuButton : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); //load the main menu
     }
 
     private void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); //load the main menu
     }
 }

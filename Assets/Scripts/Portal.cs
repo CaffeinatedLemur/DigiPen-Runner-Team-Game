@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*******************************************
+ * Authors: Mario E, ended up not being used
+ * Date: 4/2/2021
+ * Desc: Handles the portal
+ * ****************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

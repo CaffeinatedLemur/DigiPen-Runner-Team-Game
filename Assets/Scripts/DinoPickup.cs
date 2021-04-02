@@ -1,17 +1,22 @@
-﻿using System.Collections;
+﻿/*******************************************
+ * Authors: Thomas A
+ * Date: 4/2/2021
+ * Desc: Handles actions when the player picks up the dino
+ * ****************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DinoPickup : MonoBehaviour
 {
-    //[SerializeField] GameObject dinoBoiPlayer;
-
-    private PlayerHealthHandler playerHealthHandler;
+    private PlayerHealthHandler playerHealthHandler;    //health script
     private void Start()
     {
-        //dinoBoiPlayer = FindObjectOfType<DinoFollower>().gameObject;
+        //get the health script
         playerHealthHandler = FindObjectOfType<PlayerHealthHandler>();
-        if (FindObjectsOfType<DinoPickup>().Length > 2)
+        //kill other dinos in current scene
+        if (FindObjectsOfType<DinoPickup>().Length > 1)
         {
             Destroy(gameObject);
         }
@@ -19,10 +24,13 @@ public class DinoPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //make sure the player picked it up
         if (collision.gameObject.CompareTag("Player"))
         {
+            //add dino
             playerHealthHandler.AddDino(true);
         }
+        //kill it
         Destroy(gameObject);
     }
 }

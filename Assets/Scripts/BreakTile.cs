@@ -1,4 +1,5 @@
 ﻿/*Name: BreakTile.cs
+ *Authors: Mario E.
  *Date: 3/26/2021
  *Desc: allows for tile to be dropped after set amount of time from collision
  */
@@ -13,12 +14,10 @@ public class BreakTile : MonoBehaviour
     public float holdTil = 1;
     public float DestroyAt = 3;
     private Rigidbody2D myRB;
-    private BoxCollider2D myCollider;
     public AudioClip ac;
     // Start is called before the first frame update
     void Start()
     { 
-        myCollider = GetComponent<BoxCollider2D>();
         myRB=GetComponent<Rigidbody2D>();
     }
 
