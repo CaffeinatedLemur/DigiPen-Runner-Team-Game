@@ -178,7 +178,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Base project provided by DigiPen Institute of Technology.\n\nGameplay
-    inspried by Doodle Jump\n\nAll content \xA9 2021 DigiPen (USA) Corporation, all
+    inspired by Doodle Jump\n\nAll content \xA9 2021 DigiPen (USA) Corporation, all
     rights reserved."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b827cbb1f0801648af2797043293bc7, type: 2}
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e72c39967d52e46a2e4d70fcef6f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonFunction: 3
+  buttonFunction: 4
 --- !u!114 &8829404427928506243
 MonoBehaviour:
   m_ObjectHideFlags: 0

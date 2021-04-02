@@ -21,6 +21,7 @@ public enum ButtonFunctions
     Play,
     Exit,
     Restart,
+    Credits,
     MainMenu
 }
 
@@ -48,6 +49,9 @@ public class MenuButton : MonoBehaviour
                 break;
             case ButtonFunctions.Restart:
                 buttonAction = Restart;
+                break;
+            case ButtonFunctions.Credits:
+                buttonAction = Credits;
                 break;
             case ButtonFunctions.MainMenu:
                 buttonAction = MainMenu;
@@ -78,7 +82,12 @@ public class MenuButton : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene(0); //load the main menu
+        SceneManager.LoadScene(1); //load the main scene
+    }
+
+    private void Credits()
+    {
+        SceneManager.LoadScene(3); //load the credits scene
     }
 
     private void MainMenu()
