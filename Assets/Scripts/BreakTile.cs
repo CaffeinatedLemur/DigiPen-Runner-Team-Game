@@ -14,12 +14,10 @@ public class BreakTile : MonoBehaviour
     public float DestroyAt = 3;
     private Rigidbody2D myRB;
     private BoxCollider2D myCollider;
-    private AudioSource As;
     public AudioClip ac;
     // Start is called before the first frame update
     void Start()
-    {
-        As = GetComponent<AudioSource>();
+    { 
         myCollider = GetComponent<BoxCollider2D>();
         myRB=GetComponent<Rigidbody2D>();
     }
@@ -33,7 +31,6 @@ public class BreakTile : MonoBehaviour
                 myRB.constraints = RigidbodyConstraints2D.FreezePositionX;
                 if (timer > DestroyAt)
                 {
-                    As.PlayOneShot(ac);
                     Destroy(myRB.gameObject);//despawns
                 }
             }
@@ -41,6 +38,7 @@ public class BreakTile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D col)
     {
+        col.gameObject.GetComponent<AudioSource>().PlayOneShot(ac);
         tf = true;
     }
 }
