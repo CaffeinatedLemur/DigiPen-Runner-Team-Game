@@ -19,11 +19,12 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            StartCoroutine(ExecuteAfterTime(duration));
             PlayerHealthHandler.isInvulnerable = true;
             animator.SetBool("Shielded", true);
             playerHealthHandler.UpdateUI(PlayerHealthHandler.playerHealth);
-            StartCoroutine(ExecuteAfterTime(duration));
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             collision.GetComponent<AudioSource>().PlayOneShot(ac);
         }
     }
