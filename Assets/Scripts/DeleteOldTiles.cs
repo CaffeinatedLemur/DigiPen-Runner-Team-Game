@@ -67,9 +67,17 @@ public class DeleteOldTiles : MonoBehaviour
                 killBox.transform.position = updatedKillboxPos;
                 //reset spawn timer
                 timer = 0;
-                */
-                Vector3 updatedKillboxPos = killBox.transform.position;
-                updatedKillboxPos.y += 10;
+                
+                 */
+
+                DestroyAfterTime[] parents = FindObjectsOfType<DestroyAfterTime>();
+                float lowest = 2147483647;
+                for (int o = 0; o < parents.Length; o++)
+                {
+                    if (lowest >= parents[o].gameObject.transform.position.y)
+                        lowest = parents[o].gameObject.transform.position.y;
+                }
+                Vector3 updatedKillboxPos = new Vector3(killBox.transform.position.x, lowest, killBox.transform.position.z);
                 killBox.transform.position = updatedKillboxPos;
                 //reset spawn timer
                 timer = 0;

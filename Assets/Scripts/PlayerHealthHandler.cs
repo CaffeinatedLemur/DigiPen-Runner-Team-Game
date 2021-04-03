@@ -23,6 +23,7 @@ public class PlayerHealthHandler : MonoBehaviour
     [SerializeField] Image[] shieldsHearts;
     [SerializeField] Image dinoHeart; //the dino heart <3
     [SerializeField] GameObject dinoBoiPlayer; //the dino childed to player
+    [SerializeField] Animator dinoboiAnimator;
     public AudioClip ac; //audioclip to play on damaged
     public void Start()
     {
@@ -52,6 +53,7 @@ public class PlayerHealthHandler : MonoBehaviour
         //wether to add of remove the dino heart and dino
         if (add)
         {
+            dinoBoiPlayer.GetComponent<Animator>().SetBool("Death", false);
             //if you shuld, set dino health to 1
             dinoHealth = 1;
             //turn on the dino
@@ -64,11 +66,19 @@ public class PlayerHealthHandler : MonoBehaviour
         {
             //otherwise, kill the dino and reset the health
             dinoHealth = 0;
-            dinoBoiPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            dinoBoiPlayer.GetComponent<Animator>().SetBool("Death", true);
+            //dinoBoiPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Invoke("resetAnim", 2);
         }
         //update the ui to match new status
         UpdateUI(playerHealth);
     }
+
+    private void resetAnim ()
+    {
+        dinoBoiPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
     public void SubtractHealth(int healthMod)
     {
         //only subtract if player inst invulnerable
